@@ -2,20 +2,20 @@
 
 <rss version="0.91">
   <channel>
-    <title>WhiteSource update service API - Checkstyle report</title>
-    <link>https://github.com/whitesource/agents/wss-agent-api/</link>
-    <description>WhiteSource update service API - Checkstyle report</description>
+    <title>WhiteSource maven plugin - Checkstyle report</title>
+    <link>https://github.com/whitesource/agents/whitesource-maven-plugin/</link>
+    <description>WhiteSource maven plugin - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2012 White Source</copyright>
     <item>
-      <title>File: 15,
-             Errors: 1221,
+      <title>File: 6,
+             Errors: 912,
              Warnings: 0,
              Infos: 0
       </title>
-            <link>https://github.com/whitesource/agents/wss-agent-api//checkstyle.html</link>
+            <link>https://github.com/whitesource/agents/whitesource-maven-plugin//checkstyle.html</link>
       <description>
-        <p>Click <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="https://github.com/whitesource/agents/whitesource-maven-plugin//checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -29,7 +29,7 @@
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.api.BaseRequest.java">com/wss/agent/api/BaseRequest.java</a>
+                  <a href="https://github.com/whitesource/agents/whitesource-maven-plugin//checkstyle.html#com.wss.agent.maven.plugin.update.service.UpdateService.java">com/wss/agent/maven/plugin/update/service/UpdateService.java</a>
                 </td>
                 <td>
                   0
@@ -38,12 +38,12 @@
                   0
                 </td>
                 <td>
-                  62
+                  14
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.api.UpdateInventoryResult.java">com/wss/agent/api/UpdateInventoryResult.java</a>
+                  <a href="https://github.com/whitesource/agents/whitesource-maven-plugin//checkstyle.html#com.wss.agent.maven.plugin.update.Constants.java">com/wss/agent/maven/plugin/update/Constants.java</a>
                 </td>
                 <td>
                   0
@@ -52,12 +52,12 @@
                   0
                 </td>
                 <td>
-                  80
+                  140
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.exception.JsonParsingException.java">com/wss/agent/exception/JsonParsingException.java</a>
+                  <a href="https://github.com/whitesource/agents/whitesource-maven-plugin//checkstyle.html#com.wss.agent.maven.plugin.update.service.UpdateServiceImpl.java">com/wss/agent/maven/plugin/update/service/UpdateServiceImpl.java</a>
                 </td>
                 <td>
                   0
@@ -66,12 +66,12 @@
                   0
                 </td>
                 <td>
-                  36
+                  286
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.model.AgentProjectInfo.java">com/wss/agent/model/AgentProjectInfo.java</a>
+                  <a href="https://github.com/whitesource/agents/whitesource-maven-plugin//checkstyle.html#com.wss.agent.maven.plugin.update.Updater.java">com/wss/agent/maven/plugin/update/Updater.java</a>
                 </td>
                 <td>
                   0
@@ -80,12 +80,12 @@
                   0
                 </td>
                 <td>
-                  117
+                  26
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.api.ResultEnvelope.java">com/wss/agent/api/ResultEnvelope.java</a>
+                  <a href="https://github.com/whitesource/agents/whitesource-maven-plugin//checkstyle.html#com.wss.agent.maven.plugin.update.UpdateMojo.java">com/wss/agent/maven/plugin/update/UpdateMojo.java</a>
                 </td>
                 <td>
                   0
@@ -94,12 +94,12 @@
                   0
                 </td>
                 <td>
-                  160
+                  184
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.constants.AgentConstants.java">com/wss/agent/constants/AgentConstants.java</a>
+                  <a href="https://github.com/whitesource/agents/whitesource-maven-plugin//checkstyle.html#com.wss.agent.maven.plugin.update.UpdaterImpl.java">com/wss/agent/maven/plugin/update/UpdaterImpl.java</a>
                 </td>
                 <td>
                   0
@@ -108,133 +108,7 @@
                   0
                 </td>
                 <td>
-                  68
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.model.ExclusionInfo.java">com/wss/agent/model/ExclusionInfo.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  95
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.model.DependencyInfo.java">com/wss/agent/model/DependencyInfo.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  194
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.api.PropertiesRequest.java">com/wss/agent/api/PropertiesRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  34
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.api.UpdateInventoryRequest.java">com/wss/agent/api/UpdateInventoryRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  55
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.api.PropertiesResult.java">com/wss/agent/api/PropertiesResult.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  63
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.api.RequestType.java">com/wss/agent/api/RequestType.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  7
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.model.Coordinates.java">com/wss/agent/model/Coordinates.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  122
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.api.ServiceRequest.java">com/wss/agent/api/ServiceRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  19
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#com.wss.agent.utils.JsonUtils.java">com/wss/agent/utils/JsonUtils.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  109
+                  262
                 </td>
               </tr>
                       </tbody>
