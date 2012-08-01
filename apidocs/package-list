@@ -1,0 +1,7 @@
+org.whitesource.agent.api
+org.whitesource.agent.api.dispatch
+org.whitesource.agent.api.model
+org.whitesource.agent.maven.plugin
+org.whitesource.agent.maven.plugin.report
+org.whitesource.agent.maven.plugin.update
+org.whitesource.api.client
