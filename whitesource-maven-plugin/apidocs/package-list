@@ -1,0 +1,3 @@
+org.whitesource.agent.maven.plugin
+org.whitesource.agent.maven.plugin.report
+org.whitesource.agent.maven.plugin.update
