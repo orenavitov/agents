@@ -2,14 +2,14 @@
 
 <rss version="0.91">
   <channel>
-    <title>Client for WhiteSource service API - Checkstyle report</title>
+    <title>API client implementation - Checkstyle report</title>
     <link>https://github.com/whitesource/agents/wss-agent-api-client/</link>
-    <description>Client for WhiteSource service API - Checkstyle report</description>
+    <description>API client implementation - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2012 White Source</copyright>
+    <copyright>&#169;2011 - 2012 White Source</copyright>
     <item>
       <title>File: 5,
-             Errors: 375,
+             Errors: 386,
              Warnings: 0,
              Infos: 0
       </title>
@@ -29,7 +29,7 @@
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.api.client.WssServiceClientImpl.java">org/whitesource/api/client/WssServiceClientImpl.java</a>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.agent.client.WssServiceClientImpl.java">org/whitesource/agent/client/WssServiceClientImpl.java</a>
                 </td>
                 <td>
                   0
@@ -38,12 +38,12 @@
                   0
                 </td>
                 <td>
-                  263
+                  265
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.api.client.WssServiceClient.java">org/whitesource/api/client/WssServiceClient.java</a>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.agent.client.WssServiceClient.java">org/whitesource/agent/client/WssServiceClient.java</a>
                 </td>
                 <td>
                   0
@@ -52,40 +52,12 @@
                   0
                 </td>
                 <td>
-                  9
+                  11
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.api.client.WssServiceException.java">org/whitesource/api/client/WssServiceException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  41
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.api.client.WhitesourceService.java">org/whitesource/api/client/WhitesourceService.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  37
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.api.client.ClientConstants.java">org/whitesource/api/client/ClientConstants.java</a>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.agent.client.ClientConstants.java">org/whitesource/agent/client/ClientConstants.java</a>
                 </td>
                 <td>
                   0
@@ -95,6 +67,34 @@
                 </td>
                 <td>
                   25
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.agent.client.WhitesourceService.java">org/whitesource/agent/client/WhitesourceService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  44
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.agent.client.WssServiceException.java">org/whitesource/agent/client/WssServiceException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  41
                 </td>
               </tr>
                       </tbody>
