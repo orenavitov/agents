@@ -1,2 +1,4 @@
 org.whitesource.agent.api
-org.whitesource.agent.api.client
+org.whitesource.agent.api.model
+org.whitesource.agent.client
+org.whitesource.agent.report
