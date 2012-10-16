@@ -2,14 +2,14 @@
 
 <rss version="0.91">
   <channel>
-    <title>WhiteSource update service API - Checkstyle report</title>
+    <title>API bindings - Checkstyle report</title>
     <link>https://github.com/whitesource/agents/wss-agent-api/</link>
-    <description>WhiteSource update service API - Checkstyle report</description>
+    <description>API bindings - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2012 White Source</copyright>
+    <copyright>&#169;2011 - 2012 White Source</copyright>
     <item>
-      <title>File: 17,
-             Errors: 1400,
+      <title>File: 22,
+             Errors: 1526,
              Warnings: 0,
              Infos: 0
       </title>
@@ -57,6 +57,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.CheckPoliciesResult.java">org/whitesource/agent/api/dispatch/CheckPoliciesResult.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  67
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.model.Coordinates.java">org/whitesource/agent/api/model/Coordinates.java</a>
                 </td>
                 <td>
@@ -66,7 +80,21 @@
                   0
                 </td>
                 <td>
-                  49
+                  50
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.model.ExclusionInfo.java">org/whitesource/agent/api/model/ExclusionInfo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  95
                 </td>
               </tr>
                           <tr>
@@ -85,7 +113,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.model.ExclusionInfo.java">org/whitesource/agent/api/model/ExclusionInfo.java</a>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.model.ResourceInfo.java">org/whitesource/agent/api/model/ResourceInfo.java</a>
                 </td>
                 <td>
                   0
@@ -94,7 +122,7 @@
                   0
                 </td>
                 <td>
-                  96
+                  28
                 </td>
               </tr>
                           <tr>
@@ -136,21 +164,7 @@
                   0
                 </td>
                 <td>
-                  9
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.RequestFactory.java">org/whitesource/agent/api/dispatch/RequestFactory.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  116
+                  11
                 </td>
               </tr>
                           <tr>
@@ -165,6 +179,34 @@
                 </td>
                 <td>
                   264
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.RequestFactory.java">org/whitesource/agent/api/dispatch/RequestFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  24
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.model.RequestPolicyInfo.java">org/whitesource/agent/api/model/RequestPolicyInfo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  48
                 </td>
               </tr>
                           <tr>
@@ -193,6 +235,20 @@
                 </td>
                 <td>
                   52
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.CheckPoliciesRequest.java">org/whitesource/agent/api/dispatch/CheckPoliciesRequest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  39
                 </td>
               </tr>
                           <tr>
@@ -234,7 +290,7 @@
                   0
                 </td>
                 <td>
-                  32
+                  31
                 </td>
               </tr>
                           <tr>
@@ -249,6 +305,20 @@
                 </td>
                 <td>
                   10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.model.PolicyCheckResourceNode.java">org/whitesource/agent/api/model/PolicyCheckResourceNode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  35
                 </td>
               </tr>
                           <tr>
