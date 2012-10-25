@@ -9,7 +9,7 @@
     <copyright>&#169;2011 - 2012 White Source</copyright>
     <item>
       <title>File: 30,
-             Errors: 2108,
+             Errors: 2126,
              Warnings: 0,
              Infos: 0
       </title>
@@ -178,7 +178,7 @@
                   0
                 </td>
                 <td>
-                  10
+                  13
                 </td>
               </tr>
                           <tr>
@@ -220,7 +220,7 @@
                   0
                 </td>
                 <td>
-                  77
+                  93
                 </td>
               </tr>
                           <tr>
@@ -262,7 +262,7 @@
                   0
                 </td>
                 <td>
-                  67
+                  68
                 </td>
               </tr>
                           <tr>
@@ -374,7 +374,7 @@
                   0
                 </td>
                 <td>
-                  88
+                  86
                 </td>
               </tr>
                           <tr>
@@ -421,20 +421,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents//checkstyle.html#org.whitesource.agent.client.WssServiceException.java">org/whitesource/agent/client/WssServiceException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  41
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/whitesource/agents//checkstyle.html#org.whitesource.agent.api.dispatch.UpdateInventoryRequest.java">org/whitesource/agent/api/dispatch/UpdateInventoryRequest.java</a>
                 </td>
                 <td>
@@ -445,6 +431,20 @@
                 </td>
                 <td>
                   46
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents//checkstyle.html#org.whitesource.agent.client.WssServiceException.java">org/whitesource/agent/client/WssServiceException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  41
                 </td>
               </tr>
                       </tbody>

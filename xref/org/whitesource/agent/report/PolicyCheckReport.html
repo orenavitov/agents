@@ -28,7 +28,7 @@
 <a class="jxr_linenumber" name="18" href="#18">18</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.collections.MapUtils;
 <a class="jxr_linenumber" name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang.StringUtils;
 <a class="jxr_linenumber" name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.VelocityContext;
-<a class="jxr_linenumber" name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.app.Velocity;
+<a class="jxr_linenumber" name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.app.VelocityEngine;
 <a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 <a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.whitesource.agent.api.dispatch.CheckPoliciesResult;
 <a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.whitesource.agent.api.model.ResourceInfo;
@@ -101,147 +101,201 @@
 <a class="jxr_linenumber" name="91" href="#91">91</a>  <em class="jxr_javadoccomment">     * @param pack      &lt;code&gt;True&lt;/code&gt; to create a zip file from the resulting directory.</em>
 <a class="jxr_linenumber" name="92" href="#92">92</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="93" href="#93">93</a>      <strong class="jxr_keyword">public</strong> File generate(File outputDir, <strong class="jxr_keyword">boolean</strong> pack) <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="94" href="#94">94</a>          <strong class="jxr_keyword">if</strong> (result == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="95" href="#95">95</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalStateException(<span class="jxr_string">"Check policies result is null"</span>);
-<a class="jxr_linenumber" name="96" href="#96">96</a>          }
-<a class="jxr_linenumber" name="97" href="#97">97</a>  
-<a class="jxr_linenumber" name="98" href="#98">98</a>          <em class="jxr_comment">// make sure we have a working directory</em>
-<a class="jxr_linenumber" name="99" href="#99">99</a>          File workDir = <strong class="jxr_keyword">new</strong> File(outputDir, <span class="jxr_string">"whitesource"</span>);
-<a class="jxr_linenumber" name="100" href="#100">100</a>         File reportFile = workDir;
-<a class="jxr_linenumber" name="101" href="#101">101</a>         <strong class="jxr_keyword">if</strong> (!workDir.exists()) {
-<a class="jxr_linenumber" name="102" href="#102">102</a>             <strong class="jxr_keyword">boolean</strong> mkdir = workDir.mkdir();
-<a class="jxr_linenumber" name="103" href="#103">103</a>             <strong class="jxr_keyword">if</strong> (!mkdir) {
-<a class="jxr_linenumber" name="104" href="#104">104</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException(<span class="jxr_string">"Unable to make output directory"</span>);
-<a class="jxr_linenumber" name="105" href="#105">105</a>             }
-<a class="jxr_linenumber" name="106" href="#106">106</a>         }
-<a class="jxr_linenumber" name="107" href="#107">107</a> 
-<a class="jxr_linenumber" name="108" href="#108">108</a>         <em class="jxr_comment">// create actual report</em>
-<a class="jxr_linenumber" name="109" href="#109">109</a>         createReport(workDir);
-<a class="jxr_linenumber" name="110" href="#110">110</a> 
-<a class="jxr_linenumber" name="111" href="#111">111</a>         <em class="jxr_comment">// copy report resources</em>
-<a class="jxr_linenumber" name="112" href="#112">112</a>         copyReportResources(workDir);
-<a class="jxr_linenumber" name="113" href="#113">113</a> 
-<a class="jxr_linenumber" name="114" href="#114">114</a>         <em class="jxr_comment">// package report into a zip archive</em>
-<a class="jxr_linenumber" name="115" href="#115">115</a>         <strong class="jxr_keyword">if</strong> (pack) {
-<a class="jxr_linenumber" name="116" href="#116">116</a>             reportFile = <strong class="jxr_keyword">new</strong> File(outputDir, <span class="jxr_string">"whitesource.zip"</span>);
-<a class="jxr_linenumber" name="117" href="#117">117</a>             ZipOutputStream zos = <strong class="jxr_keyword">new</strong> ZipOutputStream(<strong class="jxr_keyword">new</strong> FileOutputStream(reportFile));
-<a class="jxr_linenumber" name="118" href="#118">118</a>             FileUtils.packDirectory(workDir, zos);
-<a class="jxr_linenumber" name="119" href="#119">119</a>             FileUtils.deleteRecursive(workDir);
-<a class="jxr_linenumber" name="120" href="#120">120</a>         }
-<a class="jxr_linenumber" name="121" href="#121">121</a> 
-<a class="jxr_linenumber" name="122" href="#122">122</a>         <strong class="jxr_keyword">return</strong> reportFile;
-<a class="jxr_linenumber" name="123" href="#123">123</a>     }
-<a class="jxr_linenumber" name="124" href="#124">124</a> 
-<a class="jxr_linenumber" name="125" href="#125">125</a>     <em class="jxr_comment">/*<em class="jxr_comment"> --- Private methods --- */</em></em>
-<a class="jxr_linenumber" name="126" href="#126">126</a> 
-<a class="jxr_linenumber" name="127" href="#127">127</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> createReport(File outputDir) <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="128" href="#128">128</a>         <em class="jxr_comment">// initialize velocity engine</em>
-<a class="jxr_linenumber" name="129" href="#129">129</a>         Velocity.setProperty(Velocity.RESOURCE_LOADER, <span class="jxr_string">"classpath"</span>);
-<a class="jxr_linenumber" name="130" href="#130">130</a>         Velocity.setProperty(<span class="jxr_string">"classpath.resource.loader.class"</span>, ClasspathResourceLoader.<strong class="jxr_keyword">class</strong>.getName());
-<a class="jxr_linenumber" name="131" href="#131">131</a>         Velocity.init();
-<a class="jxr_linenumber" name="132" href="#132">132</a> 
-<a class="jxr_linenumber" name="133" href="#133">133</a>         <em class="jxr_comment">// create template context</em>
-<a class="jxr_linenumber" name="134" href="#134">134</a>         VelocityContext context = <strong class="jxr_keyword">new</strong> VelocityContext();
-<a class="jxr_linenumber" name="135" href="#135">135</a>         context.put(<span class="jxr_string">"result"</span>, result);
-<a class="jxr_linenumber" name="136" href="#136">136</a>         context.put(<span class="jxr_string">"hasRejections"</span>, result.hasRejections());
-<a class="jxr_linenumber" name="137" href="#137">137</a>         context.put(<span class="jxr_string">"licenses"</span>, createLicenseHistogram(result));
-<a class="jxr_linenumber" name="138" href="#138">138</a>         context.put(<span class="jxr_string">"creationTime"</span>, SimpleDateFormat.getInstance().format(<strong class="jxr_keyword">new</strong> Date()));
-<a class="jxr_linenumber" name="139" href="#139">139</a> 
-<a class="jxr_linenumber" name="140" href="#140">140</a>         <strong class="jxr_keyword">if</strong> (StringUtils.isNotBlank(buildName)) {
-<a class="jxr_linenumber" name="141" href="#141">141</a>             context.put(<span class="jxr_string">"buildName"</span>, buildName);
-<a class="jxr_linenumber" name="142" href="#142">142</a>         }
-<a class="jxr_linenumber" name="143" href="#143">143</a>         <strong class="jxr_keyword">if</strong> (StringUtils.isNotBlank(buildNumber)) {
-<a class="jxr_linenumber" name="144" href="#144">144</a>             context.put(<span class="jxr_string">"buildNumber"</span>, buildNumber);
-<a class="jxr_linenumber" name="145" href="#145">145</a>         }
+<a class="jxr_linenumber" name="94" href="#94">94</a>          <strong class="jxr_keyword">return</strong> generate(outputDir, pack, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="95" href="#95">95</a>      }
+<a class="jxr_linenumber" name="96" href="#96">96</a>  
+<a class="jxr_linenumber" name="97" href="#97">97</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="98" href="#98">98</a>  <em class="jxr_javadoccomment">     * The method generate the policy check report</em>
+<a class="jxr_linenumber" name="99" href="#99">99</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="100" href="#100">100</a> <em class="jxr_javadoccomment">     * @param outputDir Directory where report files will be created.</em>
+<a class="jxr_linenumber" name="101" href="#101">101</a> <em class="jxr_javadoccomment">     * @param pack      &lt;code&gt;True&lt;/code&gt; to create a zip file from the resulting directory.</em>
+<a class="jxr_linenumber" name="102" href="#102">102</a> <em class="jxr_javadoccomment">     * @param properties Properties for template engine.</em>
+<a class="jxr_linenumber" name="103" href="#103">103</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="104" href="#104">104</a> <em class="jxr_javadoccomment">     * @return  File reference to the resulting report.</em>
+<a class="jxr_linenumber" name="105" href="#105">105</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="106" href="#106">106</a> <em class="jxr_javadoccomment">     * @throws IOException In case of errors during report generation process.</em>
+<a class="jxr_linenumber" name="107" href="#107">107</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="108" href="#108">108</a>     <strong class="jxr_keyword">public</strong> File generate(File outputDir, <strong class="jxr_keyword">boolean</strong> pack, Properties properties) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="109" href="#109">109</a>         <strong class="jxr_keyword">if</strong> (result == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="110" href="#110">110</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalStateException(<span class="jxr_string">"Check policies result is null"</span>);
+<a class="jxr_linenumber" name="111" href="#111">111</a>         }
+<a class="jxr_linenumber" name="112" href="#112">112</a> 
+<a class="jxr_linenumber" name="113" href="#113">113</a>         <em class="jxr_comment">// prepare working directory</em>
+<a class="jxr_linenumber" name="114" href="#114">114</a>         File workDir = <strong class="jxr_keyword">new</strong> File(outputDir, <span class="jxr_string">"whitesource"</span>);
+<a class="jxr_linenumber" name="115" href="#115">115</a>         File reportFile = workDir;
+<a class="jxr_linenumber" name="116" href="#116">116</a>         <strong class="jxr_keyword">if</strong> (!workDir.exists() &amp;&amp; !workDir.mkdir()) {
+<a class="jxr_linenumber" name="117" href="#117">117</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException(<span class="jxr_string">"Unable to make output directory: "</span> + workDir);
+<a class="jxr_linenumber" name="118" href="#118">118</a>         }
+<a class="jxr_linenumber" name="119" href="#119">119</a> 
+<a class="jxr_linenumber" name="120" href="#120">120</a>         <em class="jxr_comment">// create actual report</em>
+<a class="jxr_linenumber" name="121" href="#121">121</a>         VelocityEngine engine = createTemplateEngine(properties);
+<a class="jxr_linenumber" name="122" href="#122">122</a>         VelocityContext context = createTemplateContext();
+<a class="jxr_linenumber" name="123" href="#123">123</a>         FileWriter fw = <strong class="jxr_keyword">new</strong> FileWriter(<strong class="jxr_keyword">new</strong> File(workDir, <span class="jxr_string">"index.html"</span>));
+<a class="jxr_linenumber" name="124" href="#124">124</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="125" href="#125">125</a>             engine.mergeTemplate(TEMPLATE_FOLDER + TEMPLATE_FILE, <span class="jxr_string">"UTF-8"</span>, context, fw);
+<a class="jxr_linenumber" name="126" href="#126">126</a>             fw.flush();
+<a class="jxr_linenumber" name="127" href="#127">127</a>         } <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a class="jxr_linenumber" name="128" href="#128">128</a>             FileUtils.close(fw);
+<a class="jxr_linenumber" name="129" href="#129">129</a>         }
+<a class="jxr_linenumber" name="130" href="#130">130</a> 
+<a class="jxr_linenumber" name="131" href="#131">131</a>         <em class="jxr_comment">// copy resources</em>
+<a class="jxr_linenumber" name="132" href="#132">132</a>         copyReportResources(workDir);
+<a class="jxr_linenumber" name="133" href="#133">133</a> 
+<a class="jxr_linenumber" name="134" href="#134">134</a>         <em class="jxr_comment">// package report into a zip archive</em>
+<a class="jxr_linenumber" name="135" href="#135">135</a>         <strong class="jxr_keyword">if</strong> (pack) {
+<a class="jxr_linenumber" name="136" href="#136">136</a>             reportFile = <strong class="jxr_keyword">new</strong> File(outputDir, <span class="jxr_string">"whitesource.zip"</span>);
+<a class="jxr_linenumber" name="137" href="#137">137</a>             ZipOutputStream zos = <strong class="jxr_keyword">new</strong> ZipOutputStream(<strong class="jxr_keyword">new</strong> FileOutputStream(reportFile));
+<a class="jxr_linenumber" name="138" href="#138">138</a>             FileUtils.packDirectory(workDir, zos);
+<a class="jxr_linenumber" name="139" href="#139">139</a>             FileUtils.deleteRecursive(workDir);
+<a class="jxr_linenumber" name="140" href="#140">140</a>         }
+<a class="jxr_linenumber" name="141" href="#141">141</a> 
+<a class="jxr_linenumber" name="142" href="#142">142</a>         <strong class="jxr_keyword">return</strong> reportFile;
+<a class="jxr_linenumber" name="143" href="#143">143</a>     }
+<a class="jxr_linenumber" name="144" href="#144">144</a> 
+<a class="jxr_linenumber" name="145" href="#145">145</a>     <em class="jxr_comment">/*<em class="jxr_comment"> --- Protected methods --- */</em></em>
 <a class="jxr_linenumber" name="146" href="#146">146</a> 
-<a class="jxr_linenumber" name="147" href="#147">147</a>         <em class="jxr_comment">// merge template and close file</em>
-<a class="jxr_linenumber" name="148" href="#148">148</a>         FileWriter fw = <strong class="jxr_keyword">new</strong> FileWriter(<strong class="jxr_keyword">new</strong> File(outputDir, <span class="jxr_string">"index.html"</span>));
-<a class="jxr_linenumber" name="149" href="#149">149</a>         Velocity.mergeTemplate(TEMPLATE_FOLDER + TEMPLATE_FILE, <span class="jxr_string">"UTF-8"</span>, context, fw);
-<a class="jxr_linenumber" name="150" href="#150">150</a>         fw.flush();
-<a class="jxr_linenumber" name="151" href="#151">151</a>         fw.close();
-<a class="jxr_linenumber" name="152" href="#152">152</a>     }
-<a class="jxr_linenumber" name="153" href="#153">153</a> 
-<a class="jxr_linenumber" name="154" href="#154">154</a>     <strong class="jxr_keyword">private</strong> Collection&lt;LicenseHistogramDataPoint&gt; createLicenseHistogram(<a href="../../../../org/whitesource/agent/api/dispatch/CheckPoliciesResult.html">CheckPoliciesResult</a> result) {
-<a class="jxr_linenumber" name="155" href="#155">155</a>         Collection&lt;LicenseHistogramDataPoint&gt; dataPoints = <strong class="jxr_keyword">new</strong> ArrayList&lt;LicenseHistogramDataPoint&gt;();
-<a class="jxr_linenumber" name="156" href="#156">156</a> 
-<a class="jxr_linenumber" name="157" href="#157">157</a>         <em class="jxr_comment">// create distribution histogram</em>
-<a class="jxr_linenumber" name="158" href="#158">158</a>         Map&lt;String, Integer&gt; licenseHistogram = <strong class="jxr_keyword">new</strong> HashMap&lt;String, Integer&gt;();
-<a class="jxr_linenumber" name="159" href="#159">159</a>         <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, Collection&lt;ResourceInfo&gt;&gt; entry : result.getProjectNewResources().entrySet()) {
-<a class="jxr_linenumber" name="160" href="#160">160</a>             <strong class="jxr_keyword">for</strong> (ResourceInfo resource : entry.getValue()) {
-<a class="jxr_linenumber" name="161" href="#161">161</a>                 <strong class="jxr_keyword">for</strong> (String license : resource.getLicenses()) {
-<a class="jxr_linenumber" name="162" href="#162">162</a>                     licenseHistogram.put(license, MapUtils.getInteger(licenseHistogram, license, 0) + 1);
-<a class="jxr_linenumber" name="163" href="#163">163</a>                 }
-<a class="jxr_linenumber" name="164" href="#164">164</a>             }
-<a class="jxr_linenumber" name="165" href="#165">165</a>         }
-<a class="jxr_linenumber" name="166" href="#166">166</a> 
-<a class="jxr_linenumber" name="167" href="#167">167</a>         <em class="jxr_comment">// sort by count descending</em>
-<a class="jxr_linenumber" name="168" href="#168">168</a>         List&lt;Map.Entry&lt;String, Integer&gt;&gt; licenses = <strong class="jxr_keyword">new</strong> ArrayList&lt;Map.Entry&lt;String, Integer&gt;&gt;(licenseHistogram.entrySet());
-<a class="jxr_linenumber" name="169" href="#169">169</a>         Collections.sort(licenses, <strong class="jxr_keyword">new</strong> Comparator&lt;Map.Entry&lt;String, Integer&gt;&gt;() {
-<a class="jxr_linenumber" name="170" href="#170">170</a> 
-<a class="jxr_linenumber" name="171" href="#171">171</a>             <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> compare(Map.Entry&lt;String, Integer&gt; o1, Map.Entry&lt;String, Integer&gt; o2) {
-<a class="jxr_linenumber" name="172" href="#172">172</a>                 <strong class="jxr_keyword">return</strong> o2.getValue().compareTo(o1.getValue());
-<a class="jxr_linenumber" name="173" href="#173">173</a>             }
-<a class="jxr_linenumber" name="174" href="#174">174</a>         });
-<a class="jxr_linenumber" name="175" href="#175">175</a> 
-<a class="jxr_linenumber" name="176" href="#176">176</a> 
-<a class="jxr_linenumber" name="177" href="#177">177</a>         <em class="jxr_comment">// create data points</em>
-<a class="jxr_linenumber" name="178" href="#178">178</a>         <strong class="jxr_keyword">if</strong> (!licenses.isEmpty()) {
-<a class="jxr_linenumber" name="179" href="#179">179</a>             <em class="jxr_comment">// first licenses</em>
-<a class="jxr_linenumber" name="180" href="#180">180</a>             <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, Integer&gt; entry : licenses.subList(0, Math.min(LICENSE_LIMIT, licenses.size()))) {
-<a class="jxr_linenumber" name="181" href="#181">181</a>                 dataPoints.add(<strong class="jxr_keyword">new</strong> <a href="../../../../org/whitesource/agent/report/model/LicenseHistogramDataPoint.html">LicenseHistogramDataPoint</a>(entry.getKey(), entry.getValue()));
-<a class="jxr_linenumber" name="182" href="#182">182</a>             }
+<a class="jxr_linenumber" name="147" href="#147">147</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="148" href="#148">148</a> <em class="jxr_javadoccomment">     * Create and initialize a template engine to use for generating reports.</em>
+<a class="jxr_linenumber" name="149" href="#149">149</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="150" href="#150">150</a> <em class="jxr_javadoccomment">     * @param properties properties to use for engine initialization. May be null.</em>
+<a class="jxr_linenumber" name="151" href="#151">151</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="152" href="#152">152</a> <em class="jxr_javadoccomment">     * @return A new instance of th template engine to use.</em>
+<a class="jxr_linenumber" name="153" href="#153">153</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="154" href="#154">154</a>     <strong class="jxr_keyword">protected</strong> VelocityEngine createTemplateEngine(Properties properties) {
+<a class="jxr_linenumber" name="155" href="#155">155</a>         Properties actualProperties = properties;
+<a class="jxr_linenumber" name="156" href="#156">156</a>         <strong class="jxr_keyword">if</strong> (actualProperties == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="157" href="#157">157</a>             actualProperties = <strong class="jxr_keyword">new</strong> Properties();
+<a class="jxr_linenumber" name="158" href="#158">158</a>         }
+<a class="jxr_linenumber" name="159" href="#159">159</a> 
+<a class="jxr_linenumber" name="160" href="#160">160</a>         String resourceLoader = actualProperties.getProperty(VelocityEngine.RESOURCE_LOADER);
+<a class="jxr_linenumber" name="161" href="#161">161</a>         <strong class="jxr_keyword">if</strong> (StringUtils.isBlank(resourceLoader)) {
+<a class="jxr_linenumber" name="162" href="#162">162</a>             actualProperties.setProperty(VelocityEngine.RESOURCE_LOADER, <span class="jxr_string">"classpath"</span>);
+<a class="jxr_linenumber" name="163" href="#163">163</a>             actualProperties.setProperty(<span class="jxr_string">"classpath.resource.loader.class"</span>, ClasspathResourceLoader.<strong class="jxr_keyword">class</strong>.getName());
+<a class="jxr_linenumber" name="164" href="#164">164</a>         }
+<a class="jxr_linenumber" name="165" href="#165">165</a> 
+<a class="jxr_linenumber" name="166" href="#166">166</a>         String loggerClass = actualProperties.getProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM_CLASS);
+<a class="jxr_linenumber" name="167" href="#167">167</a>         <strong class="jxr_keyword">if</strong> (StringUtils.isBlank(loggerClass)) {
+<a class="jxr_linenumber" name="168" href="#168">168</a>             actualProperties.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM_CLASS,
+<a class="jxr_linenumber" name="169" href="#169">169</a>                     <span class="jxr_string">"org.apache.velocity.runtime.log.NullLogChute"</span>);
+<a class="jxr_linenumber" name="170" href="#170">170</a>         }
+<a class="jxr_linenumber" name="171" href="#171">171</a> 
+<a class="jxr_linenumber" name="172" href="#172">172</a>         VelocityEngine velocity = <strong class="jxr_keyword">new</strong> VelocityEngine(actualProperties);
+<a class="jxr_linenumber" name="173" href="#173">173</a>         velocity.init();
+<a class="jxr_linenumber" name="174" href="#174">174</a> 
+<a class="jxr_linenumber" name="175" href="#175">175</a>         <strong class="jxr_keyword">return</strong> velocity;
+<a class="jxr_linenumber" name="176" href="#176">176</a>     }
+<a class="jxr_linenumber" name="177" href="#177">177</a> 
+<a class="jxr_linenumber" name="178" href="#178">178</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="179" href="#179">179</a> <em class="jxr_javadoccomment">     * Create the context holding all the information of the report.</em>
+<a class="jxr_linenumber" name="180" href="#180">180</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="181" href="#181">181</a>     <strong class="jxr_keyword">protected</strong> VelocityContext createTemplateContext() {
+<a class="jxr_linenumber" name="182" href="#182">182</a>         VelocityContext context = <strong class="jxr_keyword">new</strong> VelocityContext();
 <a class="jxr_linenumber" name="183" href="#183">183</a> 
-<a class="jxr_linenumber" name="184" href="#184">184</a>             <em class="jxr_comment">// aggregation of histogram tail</em>
-<a class="jxr_linenumber" name="185" href="#185">185</a>             <strong class="jxr_keyword">int</strong> tailSize = licenses.size() - LICENSE_LIMIT;
-<a class="jxr_linenumber" name="186" href="#186">186</a>             <strong class="jxr_keyword">int</strong> tailSum = 0;
-<a class="jxr_linenumber" name="187" href="#187">187</a>             <strong class="jxr_keyword">if</strong> (tailSize &gt; 0) {
-<a class="jxr_linenumber" name="188" href="#188">188</a>                 <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, Integer&gt; entry : licenses.subList(LICENSE_LIMIT, licenses.size())) {
-<a class="jxr_linenumber" name="189" href="#189">189</a>                     tailSum += entry.getValue();
-<a class="jxr_linenumber" name="190" href="#190">190</a>                 }
-<a class="jxr_linenumber" name="191" href="#191">191</a>                 dataPoints.add(<strong class="jxr_keyword">new</strong> <a href="../../../../org/whitesource/agent/report/model/LicenseHistogramDataPoint.html">LicenseHistogramDataPoint</a>(OTHER_LICENSE + <span class="jxr_string">" ("</span> + tailSize + <span class="jxr_string">")"</span>, tailSum));
-<a class="jxr_linenumber" name="192" href="#192">192</a>             }
-<a class="jxr_linenumber" name="193" href="#193">193</a> 
-<a class="jxr_linenumber" name="194" href="#194">194</a>             <em class="jxr_comment">// normalize bar height</em>
-<a class="jxr_linenumber" name="195" href="#195">195</a>             <strong class="jxr_keyword">float</strong> factor = MAX_BAR_HEIGHT / (<strong class="jxr_keyword">float</strong>) Math.max(tailSum, licenses.get(0).getValue());
-<a class="jxr_linenumber" name="196" href="#196">196</a>             <strong class="jxr_keyword">for</strong> (LicenseHistogramDataPoint dataPoint : dataPoints) {
-<a class="jxr_linenumber" name="197" href="#197">197</a>                 dataPoint.setHeight((<strong class="jxr_keyword">int</strong>) (factor * dataPoint.getOccurrences()));
-<a class="jxr_linenumber" name="198" href="#198">198</a>             }
-<a class="jxr_linenumber" name="199" href="#199">199</a>         }
-<a class="jxr_linenumber" name="200" href="#200">200</a> 
-<a class="jxr_linenumber" name="201" href="#201">201</a>         <strong class="jxr_keyword">return</strong> dataPoints;
-<a class="jxr_linenumber" name="202" href="#202">202</a>     }
-<a class="jxr_linenumber" name="203" href="#203">203</a> 
-<a class="jxr_linenumber" name="204" href="#204">204</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> copyReportResources(File outputDir) <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="205" href="#205">205</a>         <em class="jxr_comment">// copy css file</em>
-<a class="jxr_linenumber" name="206" href="#206">206</a>         FileUtils.copyResource(TEMPLATE_FOLDER + CSS_FILE, <strong class="jxr_keyword">new</strong> File(outputDir, CSS_FILE));
-<a class="jxr_linenumber" name="207" href="#207">207</a>     }
-<a class="jxr_linenumber" name="208" href="#208">208</a> 
-<a class="jxr_linenumber" name="209" href="#209">209</a>     <em class="jxr_comment">/*<em class="jxr_comment"> --- Getters / Setters --- */</em></em>
+<a class="jxr_linenumber" name="184" href="#184">184</a>         context.put(<span class="jxr_string">"result"</span>, result);
+<a class="jxr_linenumber" name="185" href="#185">185</a>         context.put(<span class="jxr_string">"hasRejections"</span>, result.hasRejections());
+<a class="jxr_linenumber" name="186" href="#186">186</a>         context.put(<span class="jxr_string">"licenses"</span>, createLicenseHistogram(result));
+<a class="jxr_linenumber" name="187" href="#187">187</a>         context.put(<span class="jxr_string">"creationTime"</span>, SimpleDateFormat.getInstance().format(<strong class="jxr_keyword">new</strong> Date()));
+<a class="jxr_linenumber" name="188" href="#188">188</a> 
+<a class="jxr_linenumber" name="189" href="#189">189</a>         <strong class="jxr_keyword">if</strong> (StringUtils.isNotBlank(buildName)) {
+<a class="jxr_linenumber" name="190" href="#190">190</a>             context.put(<span class="jxr_string">"buildName"</span>, buildName);
+<a class="jxr_linenumber" name="191" href="#191">191</a>         }
+<a class="jxr_linenumber" name="192" href="#192">192</a> 
+<a class="jxr_linenumber" name="193" href="#193">193</a>         <strong class="jxr_keyword">if</strong> (StringUtils.isNotBlank(buildNumber)) {
+<a class="jxr_linenumber" name="194" href="#194">194</a>             context.put(<span class="jxr_string">"buildNumber"</span>, buildNumber);
+<a class="jxr_linenumber" name="195" href="#195">195</a>         }
+<a class="jxr_linenumber" name="196" href="#196">196</a> 
+<a class="jxr_linenumber" name="197" href="#197">197</a>         <strong class="jxr_keyword">return</strong> context;
+<a class="jxr_linenumber" name="198" href="#198">198</a>     }
+<a class="jxr_linenumber" name="199" href="#199">199</a> 
+<a class="jxr_linenumber" name="200" href="#200">200</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="201" href="#201">201</a> <em class="jxr_javadoccomment">     * Copy required resources for the report.</em>
+<a class="jxr_linenumber" name="202" href="#202">202</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="203" href="#203">203</a> <em class="jxr_javadoccomment">     * @param workDir Report work directory.</em>
+<a class="jxr_linenumber" name="204" href="#204">204</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="205" href="#205">205</a> <em class="jxr_javadoccomment">     * @throws IOException</em>
+<a class="jxr_linenumber" name="206" href="#206">206</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="207" href="#207">207</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> copyReportResources(File workDir) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="208" href="#208">208</a>         FileUtils.copyResource(TEMPLATE_FOLDER + CSS_FILE, <strong class="jxr_keyword">new</strong> File(workDir, CSS_FILE));
+<a class="jxr_linenumber" name="209" href="#209">209</a>     }
 <a class="jxr_linenumber" name="210" href="#210">210</a> 
-<a class="jxr_linenumber" name="211" href="#211">211</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../org/whitesource/agent/api/dispatch/CheckPoliciesResult.html">CheckPoliciesResult</a> getResult() {
-<a class="jxr_linenumber" name="212" href="#212">212</a>         <strong class="jxr_keyword">return</strong> result;
-<a class="jxr_linenumber" name="213" href="#213">213</a>     }
-<a class="jxr_linenumber" name="214" href="#214">214</a> 
-<a class="jxr_linenumber" name="215" href="#215">215</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setResult(<a href="../../../../org/whitesource/agent/api/dispatch/CheckPoliciesResult.html">CheckPoliciesResult</a> result) {
-<a class="jxr_linenumber" name="216" href="#216">216</a>         <strong class="jxr_keyword">this</strong>.result = result;
-<a class="jxr_linenumber" name="217" href="#217">217</a>     }
-<a class="jxr_linenumber" name="218" href="#218">218</a> 
-<a class="jxr_linenumber" name="219" href="#219">219</a>     <strong class="jxr_keyword">public</strong> String getBuildName() {
-<a class="jxr_linenumber" name="220" href="#220">220</a>         <strong class="jxr_keyword">return</strong> buildName;
-<a class="jxr_linenumber" name="221" href="#221">221</a>     }
-<a class="jxr_linenumber" name="222" href="#222">222</a> 
-<a class="jxr_linenumber" name="223" href="#223">223</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setBuildName(String buildName) {
-<a class="jxr_linenumber" name="224" href="#224">224</a>         <strong class="jxr_keyword">this</strong>.buildName = buildName;
-<a class="jxr_linenumber" name="225" href="#225">225</a>     }
-<a class="jxr_linenumber" name="226" href="#226">226</a> 
-<a class="jxr_linenumber" name="227" href="#227">227</a>     <strong class="jxr_keyword">public</strong> String getBuildNumber() {
-<a class="jxr_linenumber" name="228" href="#228">228</a>         <strong class="jxr_keyword">return</strong> buildNumber;
-<a class="jxr_linenumber" name="229" href="#229">229</a>     }
-<a class="jxr_linenumber" name="230" href="#230">230</a> 
-<a class="jxr_linenumber" name="231" href="#231">231</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setBuildNumber(String buildNumber) {
-<a class="jxr_linenumber" name="232" href="#232">232</a>         <strong class="jxr_keyword">this</strong>.buildNumber = buildNumber;
-<a class="jxr_linenumber" name="233" href="#233">233</a>     }
-<a class="jxr_linenumber" name="234" href="#234">234</a> }
+<a class="jxr_linenumber" name="211" href="#211">211</a>     <em class="jxr_comment">/*<em class="jxr_comment"> --- Private methods --- */</em></em>
+<a class="jxr_linenumber" name="212" href="#212">212</a> 
+<a class="jxr_linenumber" name="213" href="#213">213</a>     <strong class="jxr_keyword">private</strong> Collection&lt;LicenseHistogramDataPoint&gt; createLicenseHistogram(<a href="../../../../org/whitesource/agent/api/dispatch/CheckPoliciesResult.html">CheckPoliciesResult</a> result) {
+<a class="jxr_linenumber" name="214" href="#214">214</a>         Collection&lt;LicenseHistogramDataPoint&gt; dataPoints = <strong class="jxr_keyword">new</strong> ArrayList&lt;LicenseHistogramDataPoint&gt;();
+<a class="jxr_linenumber" name="215" href="#215">215</a> 
+<a class="jxr_linenumber" name="216" href="#216">216</a>         <em class="jxr_comment">// create distribution histogram</em>
+<a class="jxr_linenumber" name="217" href="#217">217</a>         Map&lt;String, Integer&gt; licenseHistogram = <strong class="jxr_keyword">new</strong> HashMap&lt;String, Integer&gt;();
+<a class="jxr_linenumber" name="218" href="#218">218</a>         <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, Collection&lt;ResourceInfo&gt;&gt; entry : result.getProjectNewResources().entrySet()) {
+<a class="jxr_linenumber" name="219" href="#219">219</a>             <strong class="jxr_keyword">for</strong> (ResourceInfo resource : entry.getValue()) {
+<a class="jxr_linenumber" name="220" href="#220">220</a>                 <strong class="jxr_keyword">for</strong> (String license : resource.getLicenses()) {
+<a class="jxr_linenumber" name="221" href="#221">221</a>                     licenseHistogram.put(license, MapUtils.getInteger(licenseHistogram, license, 0) + 1);
+<a class="jxr_linenumber" name="222" href="#222">222</a>                 }
+<a class="jxr_linenumber" name="223" href="#223">223</a>             }
+<a class="jxr_linenumber" name="224" href="#224">224</a>         }
+<a class="jxr_linenumber" name="225" href="#225">225</a> 
+<a class="jxr_linenumber" name="226" href="#226">226</a>         <em class="jxr_comment">// sort by count descending</em>
+<a class="jxr_linenumber" name="227" href="#227">227</a>         List&lt;Map.Entry&lt;String, Integer&gt;&gt; licenses = <strong class="jxr_keyword">new</strong> ArrayList&lt;Map.Entry&lt;String, Integer&gt;&gt;(licenseHistogram.entrySet());
+<a class="jxr_linenumber" name="228" href="#228">228</a>         Collections.sort(licenses, <strong class="jxr_keyword">new</strong> Comparator&lt;Map.Entry&lt;String, Integer&gt;&gt;() {
+<a class="jxr_linenumber" name="229" href="#229">229</a> 
+<a class="jxr_linenumber" name="230" href="#230">230</a>             <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> compare(Map.Entry&lt;String, Integer&gt; o1, Map.Entry&lt;String, Integer&gt; o2) {
+<a class="jxr_linenumber" name="231" href="#231">231</a>                 <strong class="jxr_keyword">return</strong> o2.getValue().compareTo(o1.getValue());
+<a class="jxr_linenumber" name="232" href="#232">232</a>             }
+<a class="jxr_linenumber" name="233" href="#233">233</a>         });
+<a class="jxr_linenumber" name="234" href="#234">234</a> 
+<a class="jxr_linenumber" name="235" href="#235">235</a> 
+<a class="jxr_linenumber" name="236" href="#236">236</a>         <em class="jxr_comment">// create data points</em>
+<a class="jxr_linenumber" name="237" href="#237">237</a>         <strong class="jxr_keyword">if</strong> (!licenses.isEmpty()) {
+<a class="jxr_linenumber" name="238" href="#238">238</a>             <em class="jxr_comment">// first licenses</em>
+<a class="jxr_linenumber" name="239" href="#239">239</a>             <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, Integer&gt; entry : licenses.subList(0, Math.min(LICENSE_LIMIT, licenses.size()))) {
+<a class="jxr_linenumber" name="240" href="#240">240</a>                 dataPoints.add(<strong class="jxr_keyword">new</strong> <a href="../../../../org/whitesource/agent/report/model/LicenseHistogramDataPoint.html">LicenseHistogramDataPoint</a>(entry.getKey(), entry.getValue()));
+<a class="jxr_linenumber" name="241" href="#241">241</a>             }
+<a class="jxr_linenumber" name="242" href="#242">242</a> 
+<a class="jxr_linenumber" name="243" href="#243">243</a>             <em class="jxr_comment">// aggregation of histogram tail</em>
+<a class="jxr_linenumber" name="244" href="#244">244</a>             <strong class="jxr_keyword">int</strong> tailSize = licenses.size() - LICENSE_LIMIT;
+<a class="jxr_linenumber" name="245" href="#245">245</a>             <strong class="jxr_keyword">int</strong> tailSum = 0;
+<a class="jxr_linenumber" name="246" href="#246">246</a>             <strong class="jxr_keyword">if</strong> (tailSize &gt; 0) {
+<a class="jxr_linenumber" name="247" href="#247">247</a>                 <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, Integer&gt; entry : licenses.subList(LICENSE_LIMIT, licenses.size())) {
+<a class="jxr_linenumber" name="248" href="#248">248</a>                     tailSum += entry.getValue();
+<a class="jxr_linenumber" name="249" href="#249">249</a>                 }
+<a class="jxr_linenumber" name="250" href="#250">250</a>                 dataPoints.add(<strong class="jxr_keyword">new</strong> <a href="../../../../org/whitesource/agent/report/model/LicenseHistogramDataPoint.html">LicenseHistogramDataPoint</a>(OTHER_LICENSE + <span class="jxr_string">" ("</span> + tailSize + <span class="jxr_string">")"</span>, tailSum));
+<a class="jxr_linenumber" name="251" href="#251">251</a>             }
+<a class="jxr_linenumber" name="252" href="#252">252</a> 
+<a class="jxr_linenumber" name="253" href="#253">253</a>             <em class="jxr_comment">// normalize bar height</em>
+<a class="jxr_linenumber" name="254" href="#254">254</a>             <strong class="jxr_keyword">float</strong> factor = MAX_BAR_HEIGHT / (<strong class="jxr_keyword">float</strong>) Math.max(tailSum, licenses.get(0).getValue());
+<a class="jxr_linenumber" name="255" href="#255">255</a>             <strong class="jxr_keyword">for</strong> (LicenseHistogramDataPoint dataPoint : dataPoints) {
+<a class="jxr_linenumber" name="256" href="#256">256</a>                 dataPoint.setHeight((<strong class="jxr_keyword">int</strong>) (factor * dataPoint.getOccurrences()));
+<a class="jxr_linenumber" name="257" href="#257">257</a>             }
+<a class="jxr_linenumber" name="258" href="#258">258</a>         }
+<a class="jxr_linenumber" name="259" href="#259">259</a> 
+<a class="jxr_linenumber" name="260" href="#260">260</a>         <strong class="jxr_keyword">return</strong> dataPoints;
+<a class="jxr_linenumber" name="261" href="#261">261</a>     }
+<a class="jxr_linenumber" name="262" href="#262">262</a> 
+<a class="jxr_linenumber" name="263" href="#263">263</a>     <em class="jxr_comment">/*<em class="jxr_comment"> --- Getters / Setters --- */</em></em>
+<a class="jxr_linenumber" name="264" href="#264">264</a> 
+<a class="jxr_linenumber" name="265" href="#265">265</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../org/whitesource/agent/api/dispatch/CheckPoliciesResult.html">CheckPoliciesResult</a> getResult() {
+<a class="jxr_linenumber" name="266" href="#266">266</a>         <strong class="jxr_keyword">return</strong> result;
+<a class="jxr_linenumber" name="267" href="#267">267</a>     }
+<a class="jxr_linenumber" name="268" href="#268">268</a> 
+<a class="jxr_linenumber" name="269" href="#269">269</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setResult(<a href="../../../../org/whitesource/agent/api/dispatch/CheckPoliciesResult.html">CheckPoliciesResult</a> result) {
+<a class="jxr_linenumber" name="270" href="#270">270</a>         <strong class="jxr_keyword">this</strong>.result = result;
+<a class="jxr_linenumber" name="271" href="#271">271</a>     }
+<a class="jxr_linenumber" name="272" href="#272">272</a> 
+<a class="jxr_linenumber" name="273" href="#273">273</a>     <strong class="jxr_keyword">public</strong> String getBuildName() {
+<a class="jxr_linenumber" name="274" href="#274">274</a>         <strong class="jxr_keyword">return</strong> buildName;
+<a class="jxr_linenumber" name="275" href="#275">275</a>     }
+<a class="jxr_linenumber" name="276" href="#276">276</a> 
+<a class="jxr_linenumber" name="277" href="#277">277</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setBuildName(String buildName) {
+<a class="jxr_linenumber" name="278" href="#278">278</a>         <strong class="jxr_keyword">this</strong>.buildName = buildName;
+<a class="jxr_linenumber" name="279" href="#279">279</a>     }
+<a class="jxr_linenumber" name="280" href="#280">280</a> 
+<a class="jxr_linenumber" name="281" href="#281">281</a>     <strong class="jxr_keyword">public</strong> String getBuildNumber() {
+<a class="jxr_linenumber" name="282" href="#282">282</a>         <strong class="jxr_keyword">return</strong> buildNumber;
+<a class="jxr_linenumber" name="283" href="#283">283</a>     }
+<a class="jxr_linenumber" name="284" href="#284">284</a> 
+<a class="jxr_linenumber" name="285" href="#285">285</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setBuildNumber(String buildNumber) {
+<a class="jxr_linenumber" name="286" href="#286">286</a>         <strong class="jxr_keyword">this</strong>.buildNumber = buildNumber;
+<a class="jxr_linenumber" name="287" href="#287">287</a>     }
+<a class="jxr_linenumber" name="288" href="#288">288</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
