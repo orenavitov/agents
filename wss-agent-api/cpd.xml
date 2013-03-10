@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
 <duplication lines="31" tokens="202">
-<file line="69" path="/var/lib/jenkins/workspace/release-site-agents-api/wss-agent-api/src/main/java/org/whitesource/agent/api/model/Coordinates.java"/>
-<file line="97" path="/var/lib/jenkins/workspace/release-site-agents-api/wss-agent-api/src/main/java/org/whitesource/agent/api/model/DependencyInfo.java"/>
+<file line="69" path="C:\Users\edos\git\agents\wss-agent-api\src\main\java\org\whitesource\agent\api\model\Coordinates.java"/>
+<file line="97" path="C:\Users\edos\git\agents\wss-agent-api\src\main\java\org\whitesource\agent\api\model\DependencyInfo.java"/>
 <codefragment>
 <![CDATA[
         sb.append("Coordinates@").append(Integer.toHexString(hashCode()))
@@ -40,8 +40,8 @@
 </codefragment>
 </duplication>
 <duplication lines="34" tokens="155">
-<file line="101" path="/var/lib/jenkins/workspace/release-site-agents-api/wss-agent-api/src/main/java/org/whitesource/agent/api/model/Coordinates.java"/>
-<file line="129" path="/var/lib/jenkins/workspace/release-site-agents-api/wss-agent-api/src/main/java/org/whitesource/agent/api/model/DependencyInfo.java"/>
+<file line="101" path="C:\Users\edos\git\agents\wss-agent-api\src\main\java\org\whitesource\agent\api\model\Coordinates.java"/>
+<file line="129" path="C:\Users\edos\git\agents\wss-agent-api\src\main\java\org\whitesource\agent\api\model\DependencyInfo.java"/>
 <codefragment>
 <![CDATA[
         Coordinates other = (Coordinates) obj;

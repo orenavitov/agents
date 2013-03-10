@@ -134,7 +134,7 @@
 <a class="jxr_linenumber" name="124" href="#124">124</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="125" href="#125">125</a>             engine.mergeTemplate(TEMPLATE_FOLDER + TEMPLATE_FILE, <span class="jxr_string">"UTF-8"</span>, context, fw);
 <a class="jxr_linenumber" name="126" href="#126">126</a>             fw.flush();
-<a class="jxr_linenumber" name="127" href="#127">127</a>         } <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a class="jxr_linenumber" name="127" href="#127">127</a>         } <strong class="jxr_keyword">finally</strong> {
 <a class="jxr_linenumber" name="128" href="#128">128</a>             FileUtils.close(fw);
 <a class="jxr_linenumber" name="129" href="#129">129</a>         }
 <a class="jxr_linenumber" name="130" href="#130">130</a> 

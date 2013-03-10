@@ -6,10 +6,10 @@
     <link>https://github.com/whitesource/agents/wss-agent-api/</link>
     <description>API bindings - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2011 - 2012 White Source</copyright>
+    <copyright>&#169;2011 - 2013 White Source</copyright>
     <item>
-      <title>File: 22,
-             Errors: 1528,
+      <title>File: 18,
+             Errors: 1310,
              Warnings: 0,
              Infos: 0
       </title>
@@ -29,34 +29,6 @@
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.PropertiesRequest.java">org/whitesource/agent/api/dispatch/PropertiesRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  25
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.ReportRequest.java">org/whitesource/agent/api/dispatch/ReportRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  54
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.CheckPoliciesResult.java">org/whitesource/agent/api/dispatch/CheckPoliciesResult.java</a>
                 </td>
                 <td>
@@ -66,7 +38,7 @@
                   0
                 </td>
                 <td>
-                  68
+                  71
                 </td>
               </tr>
                           <tr>
@@ -80,7 +52,7 @@
                   0
                 </td>
                 <td>
-                  50
+                  49
                 </td>
               </tr>
                           <tr>
@@ -136,21 +108,7 @@
                   0
                 </td>
                 <td>
-                  63
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.ReportResult.java">org/whitesource/agent/api/dispatch/ReportResult.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
+                  64
                 </td>
               </tr>
                           <tr>
@@ -164,7 +122,7 @@
                   0
                 </td>
                 <td>
-                  11
+                  4
                 </td>
               </tr>
                           <tr>
@@ -192,7 +150,7 @@
                   0
                 </td>
                 <td>
-                  24
+                  19
                 </td>
               </tr>
                           <tr>
@@ -220,12 +178,12 @@
                   0
                 </td>
                 <td>
-                  116
+                  117
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.PropertiesResult.java">org/whitesource/agent/api/dispatch/PropertiesResult.java</a>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.BaseRequest.java">org/whitesource/agent/api/dispatch/BaseRequest.java</a>
                 </td>
                 <td>
                   0
@@ -234,7 +192,7 @@
                   0
                 </td>
                 <td>
-                  52
+                  153
                 </td>
               </tr>
                           <tr>
@@ -249,20 +207,6 @@
                 </td>
                 <td>
                   39
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.BaseRequest.java">org/whitesource/agent/api/dispatch/BaseRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  152
                 </td>
               </tr>
                           <tr>
@@ -304,7 +248,7 @@
                   0
                 </td>
                 <td>
-                  13
+                  12
                 </td>
               </tr>
                           <tr>
