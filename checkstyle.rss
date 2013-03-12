@@ -9,7 +9,7 @@
     <copyright>&#169;2011 - 2013 White Source</copyright>
     <item>
       <title>File: 26,
-             Errors: 1873,
+             Errors: 1845,
              Warnings: 0,
              Infos: 0
       </title>
@@ -52,7 +52,7 @@
                   0
                 </td>
                 <td>
-                  49
+                  50
                 </td>
               </tr>
                           <tr>
@@ -80,7 +80,7 @@
                   0
                 </td>
                 <td>
-                  26
+                  25
                 </td>
               </tr>
                           <tr>
@@ -108,7 +108,7 @@
                   0
                 </td>
                 <td>
-                  4
+                  5
                 </td>
               </tr>
                           <tr>
@@ -122,7 +122,7 @@
                   0
                 </td>
                 <td>
-                  264
+                  233
                 </td>
               </tr>
                           <tr>
@@ -164,7 +164,7 @@
                   0
                 </td>
                 <td>
-                  12
+                  13
                 </td>
               </tr>
                           <tr>
@@ -206,7 +206,7 @@
                   0
                 </td>
                 <td>
-                  93
+                  96
                 </td>
               </tr>
                           <tr>
@@ -234,7 +234,7 @@
                   0
                 </td>
                 <td>
-                  242
+                  243
                 </td>
               </tr>
                           <tr>
@@ -276,7 +276,7 @@
                   0
                 </td>
                 <td>
-                  64
+                  63
                 </td>
               </tr>
                           <tr>
@@ -304,7 +304,7 @@
                   0
                 </td>
                 <td>
-                  117
+                  116
                 </td>
               </tr>
                           <tr>
@@ -323,6 +323,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="https://github.com/whitesource/agents//checkstyle.html#org.whitesource.agent.api.dispatch.BaseRequest.java">org/whitesource/agent/api/dispatch/BaseRequest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  152
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://github.com/whitesource/agents//checkstyle.html#org.whitesource.agent.api.dispatch.CheckPoliciesRequest.java">org/whitesource/agent/api/dispatch/CheckPoliciesRequest.java</a>
                 </td>
                 <td>
@@ -333,20 +347,6 @@
                 </td>
                 <td>
                   39
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents//checkstyle.html#org.whitesource.agent.api.dispatch.BaseRequest.java">org/whitesource/agent/api/dispatch/BaseRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  153
                 </td>
               </tr>
                           <tr>
