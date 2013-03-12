@@ -1,56 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
-<duplication lines="31" tokens="202">
-<file line="69" path="C:\Users\edos\git\agents\wss-agent-api\src\main\java\org\whitesource\agent\api\model\Coordinates.java"/>
-<file line="97" path="C:\Users\edos\git\agents\wss-agent-api\src\main\java\org\whitesource\agent\api\model\DependencyInfo.java"/>
-<codefragment>
-<![CDATA[
-        sb.append("Coordinates@").append(Integer.toHexString(hashCode()))
-                .append("[")
-                .append("groupId= ").append(groupId).append(",")
-                .append("artifactId= ").append(artifactId).append(",")
-                .append("version= ").append(version)
-                .append(" ]");
-
-        return sb.toString();
-    }
-
-    @Override
-    public int hashCode() {
-        int code = APIConstants.HASH_CODE_SEED;
-        code = APIConstants.HASH_CODE_FACTOR * code + ((groupId == null) ? 0 : groupId.hashCode());
-        code = APIConstants.HASH_CODE_FACTOR * code + ((artifactId == null) ? 0 : artifactId.hashCode());
-        code = APIConstants.HASH_CODE_FACTOR * code + ((version == null) ? 0 : version.hashCode());
-
-        return code;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (obj == this) {
-            return true;
-        }
-        if (obj.getClass() != getClass()) {
-            return false;
-        }
-]]>
-</codefragment>
-</duplication>
-<duplication lines="34" tokens="155">
-<file line="101" path="C:\Users\edos\git\agents\wss-agent-api\src\main\java\org\whitesource\agent\api\model\Coordinates.java"/>
-<file line="129" path="C:\Users\edos\git\agents\wss-agent-api\src\main\java\org\whitesource\agent\api\model\DependencyInfo.java"/>
+<duplication lines="32" tokens="145">
+<file line="95" path="/var/lib/jenkins/workspace/release-site-agents-api/wss-agent-api/src/main/java/org/whitesource/agent/api/model/Coordinates.java"/>
+<file line="116" path="/var/lib/jenkins/workspace/release-site-agents-api/wss-agent-api/src/main/java/org/whitesource/agent/api/model/DependencyInfo.java"/>
 <codefragment>
 <![CDATA[
         Coordinates other = (Coordinates) obj;
 
-        boolean isEqual = (groupId == null) ? (other.groupId == null) : groupId.equals(other.groupId);
-        isEqual = isEqual && ((artifactId == null) ? (other.artifactId == null) : artifactId.equals(other.artifactId));
-        isEqual = isEqual && ((version == null) ? (other.version == null) : version.equals(other.version));
-
-        return isEqual;
+        return  (groupId == null) ? (other.groupId == null) : groupId.equals(other.groupId)
+                && ((artifactId == null) ? (other.artifactId == null) : artifactId.equals(other.artifactId))
+                && ((version == null) ? (other.version == null) : version.equals(other.version));
     }
 
     /* --- Getters / Setters --- */

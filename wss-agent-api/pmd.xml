@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2013-03-10T15:23:12.763">
-<file name="C:\Users\edos\git\agents\wss-agent-api\src\main\java\org\whitesource\agent\api\ChecksumUtils.java">
+<pmd version="4.3" timestamp="2013-03-12T13:45:27.854">
+<file name="/var/lib/jenkins/workspace/release-site-agents-api/wss-agent-api/src/main/java/org/whitesource/agent/api/ChecksumUtils.java">
 <violation beginline="67" endline="69" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.whitesource.agent.api" class="ChecksumUtils" method="calculateSHA1" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
