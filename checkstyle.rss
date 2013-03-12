@@ -52,7 +52,7 @@
                   0
                 </td>
                 <td>
-                  50
+                  49
                 </td>
               </tr>
                           <tr>
@@ -80,7 +80,7 @@
                   0
                 </td>
                 <td>
-                  25
+                  26
                 </td>
               </tr>
                           <tr>
@@ -108,7 +108,7 @@
                   0
                 </td>
                 <td>
-                  5
+                  4
                 </td>
               </tr>
                           <tr>
@@ -164,7 +164,7 @@
                   0
                 </td>
                 <td>
-                  13
+                  12
                 </td>
               </tr>
                           <tr>
@@ -234,7 +234,7 @@
                   0
                 </td>
                 <td>
-                  243
+                  242
                 </td>
               </tr>
                           <tr>
@@ -276,7 +276,7 @@
                   0
                 </td>
                 <td>
-                  63
+                  64
                 </td>
               </tr>
                           <tr>
@@ -304,7 +304,7 @@
                   0
                 </td>
                 <td>
-                  116
+                  117
                 </td>
               </tr>
                           <tr>
@@ -323,20 +323,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/whitesource/agents//checkstyle.html#org.whitesource.agent.api.dispatch.BaseRequest.java">org/whitesource/agent/api/dispatch/BaseRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  152
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/whitesource/agents//checkstyle.html#org.whitesource.agent.api.dispatch.CheckPoliciesRequest.java">org/whitesource/agent/api/dispatch/CheckPoliciesRequest.java</a>
                 </td>
                 <td>
@@ -347,6 +333,20 @@
                 </td>
                 <td>
                   39
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents//checkstyle.html#org.whitesource.agent.api.dispatch.BaseRequest.java">org/whitesource/agent/api/dispatch/BaseRequest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  153
                 </td>
               </tr>
                           <tr>
