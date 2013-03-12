@@ -38,7 +38,7 @@
                   0
                 </td>
                 <td>
-                  242
+                  243
                 </td>
               </tr>
                           <tr>
@@ -66,21 +66,7 @@
                   0
                 </td>
                 <td>
-                  26
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.agent.client.WssServiceException.java">org/whitesource/agent/client/WssServiceException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  41
+                  25
                 </td>
               </tr>
                           <tr>
@@ -95,6 +81,20 @@
                 </td>
                 <td>
                   35
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/whitesource/agents/wss-agent-api-client//checkstyle.html#org.whitesource.agent.client.WssServiceException.java">org/whitesource/agent/client/WssServiceException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  41
                 </td>
               </tr>
                       </tbody>
