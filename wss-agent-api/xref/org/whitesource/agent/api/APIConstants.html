@@ -37,37 +37,38 @@
 <a class="jxr_linenumber" name="27" href="#27">27</a>  	<em class="jxr_comment">/*<em class="jxr_comment"> --- Parameters --- */</em></em>
 <a class="jxr_linenumber" name="28" href="#28">28</a>  	
 <a class="jxr_linenumber" name="29" href="#29">29</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_TOKEN = <span class="jxr_string">"token"</span>;
-<a class="jxr_linenumber" name="30" href="#30">30</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_TIME_STAMP = <span class="jxr_string">"timeStamp"</span>;
-<a class="jxr_linenumber" name="31" href="#31">31</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_PROPERTIES = <span class="jxr_string">"properties"</span>;
+<a class="jxr_linenumber" name="30" href="#30">30</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_PRODUCT = <span class="jxr_string">"product"</span>;
+<a class="jxr_linenumber" name="31" href="#31">31</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_PRODUCT_VERSION = <span class="jxr_string">"productVersion"</span>;
 <a class="jxr_linenumber" name="32" href="#32">32</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_DIFF = <span class="jxr_string">"diff"</span>;
 <a class="jxr_linenumber" name="33" href="#33">33</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_DEPENDENCIES = <span class="jxr_string">"dependencies"</span>;
 <a class="jxr_linenumber" name="34" href="#34">34</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_AGENT = <span class="jxr_string">"agent"</span>;
 <a class="jxr_linenumber" name="35" href="#35">35</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_AGENT_VERSION = <span class="jxr_string">"agentVersion"</span>;
 <a class="jxr_linenumber" name="36" href="#36">36</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_REQUEST_TYPE = <span class="jxr_string">"type"</span>;
-<a class="jxr_linenumber" name="37" href="#37">37</a>  	
-<a class="jxr_linenumber" name="38" href="#38">38</a>  	<em class="jxr_comment">/*<em class="jxr_comment"> --- Messages --- */</em></em>
-<a class="jxr_linenumber" name="39" href="#39">39</a>  	
-<a class="jxr_linenumber" name="40" href="#40">40</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String TOKEN_INVALID = <span class="jxr_string">"Invalid token"</span>;
-<a class="jxr_linenumber" name="41" href="#41">41</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String TIME_STAMP_INVALID = <span class="jxr_string">"Invalid request time"</span>;
-<a class="jxr_linenumber" name="42" href="#42">42</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String DIFF_INVALID = <span class="jxr_string">"Invalid diff"</span>;
-<a class="jxr_linenumber" name="43" href="#43">43</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String UPDATE_SUCCESS = <span class="jxr_string">"update success"</span>;
-<a class="jxr_linenumber" name="44" href="#44">44</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String JSON_ERROR = <span class="jxr_string">"Problem parsing json"</span>;
-<a class="jxr_linenumber" name="45" href="#45">45</a>  	
-<a class="jxr_linenumber" name="46" href="#46">46</a>  	<em class="jxr_comment">/*<em class="jxr_comment"> --- Miscellaneous --- */</em></em>
-<a class="jxr_linenumber" name="47" href="#47">47</a>  	
-<a class="jxr_linenumber" name="48" href="#48">48</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> HASH_CODE_SEED = 133;
-<a class="jxr_linenumber" name="49" href="#49">49</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> HASH_CODE_FACTOR = 23;
-<a class="jxr_linenumber" name="50" href="#50">50</a>  	
-<a class="jxr_linenumber" name="51" href="#51">51</a>  	<em class="jxr_comment">/*<em class="jxr_comment"> --- Constructors --- */</em></em>
-<a class="jxr_linenumber" name="52" href="#52">52</a>  	
-<a class="jxr_linenumber" name="53" href="#53">53</a>  	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="54" href="#54">54</a>  <em class="jxr_javadoccomment">	 * Private default constructor</em>
-<a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="56" href="#56">56</a>  	<strong class="jxr_keyword">private</strong> <a href="../../../../org/whitesource/agent/api/APIConstants.html">APIConstants</a>() {
-<a class="jxr_linenumber" name="57" href="#57">57</a>  		<em class="jxr_comment">// avoid instantiation</em>
-<a class="jxr_linenumber" name="58" href="#58">58</a>  	}
-<a class="jxr_linenumber" name="59" href="#59">59</a>  
-<a class="jxr_linenumber" name="60" href="#60">60</a>  }
+<a class="jxr_linenumber" name="37" href="#37">37</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAM_TIME_STAMP = <span class="jxr_string">"timeStamp"</span>;
+<a class="jxr_linenumber" name="38" href="#38">38</a>  	
+<a class="jxr_linenumber" name="39" href="#39">39</a>  	<em class="jxr_comment">/*<em class="jxr_comment"> --- Messages --- */</em></em>
+<a class="jxr_linenumber" name="40" href="#40">40</a>  	
+<a class="jxr_linenumber" name="41" href="#41">41</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String TOKEN_INVALID = <span class="jxr_string">"Invalid token"</span>;
+<a class="jxr_linenumber" name="42" href="#42">42</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String TIME_STAMP_INVALID = <span class="jxr_string">"Invalid request time"</span>;
+<a class="jxr_linenumber" name="43" href="#43">43</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String DIFF_INVALID = <span class="jxr_string">"Invalid diff"</span>;
+<a class="jxr_linenumber" name="44" href="#44">44</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String UPDATE_SUCCESS = <span class="jxr_string">"update success"</span>;
+<a class="jxr_linenumber" name="45" href="#45">45</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String JSON_ERROR = <span class="jxr_string">"Problem parsing json"</span>;
+<a class="jxr_linenumber" name="46" href="#46">46</a>  	
+<a class="jxr_linenumber" name="47" href="#47">47</a>  	<em class="jxr_comment">/*<em class="jxr_comment"> --- Miscellaneous --- */</em></em>
+<a class="jxr_linenumber" name="48" href="#48">48</a>  	
+<a class="jxr_linenumber" name="49" href="#49">49</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> HASH_CODE_SEED = 133;
+<a class="jxr_linenumber" name="50" href="#50">50</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> HASH_CODE_FACTOR = 23;
+<a class="jxr_linenumber" name="51" href="#51">51</a>  	
+<a class="jxr_linenumber" name="52" href="#52">52</a>  	<em class="jxr_comment">/*<em class="jxr_comment"> --- Constructors --- */</em></em>
+<a class="jxr_linenumber" name="53" href="#53">53</a>  	
+<a class="jxr_linenumber" name="54" href="#54">54</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment">	 * Private default constructor</em>
+<a class="jxr_linenumber" name="56" href="#56">56</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="57" href="#57">57</a>  	<strong class="jxr_keyword">private</strong> <a href="../../../../org/whitesource/agent/api/APIConstants.html">APIConstants</a>() {
+<a class="jxr_linenumber" name="58" href="#58">58</a>  		<em class="jxr_comment">// avoid instantiation</em>
+<a class="jxr_linenumber" name="59" href="#59">59</a>  	}
+<a class="jxr_linenumber" name="60" href="#60">60</a>  
+<a class="jxr_linenumber" name="61" href="#61">61</a>  }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
