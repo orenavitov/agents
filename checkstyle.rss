@@ -6,10 +6,10 @@
     <link>https://github.com/whitesource/agents/</link>
     <description>White Source agent API - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2011 - 2013 White Source</copyright>
+    <copyright>&#169;2011 - 2014 White Source</copyright>
     <item>
       <title>File: 26,
-             Errors: 1879,
+             Errors: 1884,
              Warnings: 0,
              Infos: 0
       </title>
@@ -206,7 +206,7 @@
                   0
                 </td>
                 <td>
-                  96
+                  101
                 </td>
               </tr>
                           <tr>
