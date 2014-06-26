@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2011 - 2014 White Source</copyright>
     <item>
-      <title>File: 22,
-             Errors: 1412,
+      <title>File: 19,
+             Errors: 1336,
              Warnings: 0,
              Infos: 0
       </title>
@@ -27,34 +27,6 @@
             </tr>
           </thead>
           <tbody>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.GetInHouseRulesRequest.java">org/whitesource/agent/api/dispatch/GetInHouseRulesRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  6
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.GetInHouseRulesResult.java">org/whitesource/agent/api/dispatch/GetInHouseRulesResult.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  21
-                </td>
-              </tr>
                           <tr>
                 <td>
                   <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.dispatch.CheckPoliciesResult.java">org/whitesource/agent/api/dispatch/CheckPoliciesResult.java</a>
@@ -150,7 +122,7 @@
                   0
                 </td>
                 <td>
-                  6
+                  5
                 </td>
               </tr>
                           <tr>
@@ -164,7 +136,7 @@
                   0
                 </td>
                 <td>
-                  257
+                  263
                 </td>
               </tr>
                           <tr>
@@ -178,7 +150,7 @@
                   0
                 </td>
                 <td>
-                  42
+                  39
                 </td>
               </tr>
                           <tr>
@@ -193,20 +165,6 @@
                 </td>
                 <td>
                   48
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/whitesource/agents/wss-agent-api//checkstyle.html#org.whitesource.agent.api.model.InHouseRule.java">org/whitesource/agent/api/model/InHouseRule.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  51
                 </td>
               </tr>
                           <tr>
