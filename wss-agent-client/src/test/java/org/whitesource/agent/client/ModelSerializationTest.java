@@ -68,8 +68,7 @@ public class ModelSerializationTest {
 
     @Test
     public void testUpdateInventoryResult() {
-        UpdateInventoryResult result = new UpdateInventoryResult();
-        result.setOrganization("organization");
+        UpdateInventoryResult result = new UpdateInventoryResult("organization");
         result.setCreatedProjects(Arrays.asList("created-project-1", "created-project-2", "created-project-3"));
         result.setUpdatedProjects(Arrays.asList("updated-project-1", "updated-project-2", "updated-project-3"));
 
@@ -213,8 +212,7 @@ public class ModelSerializationTest {
     }
 
     private CheckPoliciesResult createCheckPoliciesResult() {
-        CheckPoliciesResult result = new CheckPoliciesResult();
-        result.setOrganization("organization");
+        CheckPoliciesResult result = new CheckPoliciesResult("organization");
 
         PolicyCheckResourceNode root = new PolicyCheckResourceNode();
         result.getNewProjects().put("newProject - 0.0.1", root);

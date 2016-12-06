@@ -47,13 +47,13 @@ public class PolicyCheckReportTest {
 
     @Test(expected = IOException.class)
     public void testNonExistingOutoutDirectory() throws IOException {
-        PolicyCheckReport report = new PolicyCheckReport(new CheckPoliciesResult());
+        PolicyCheckReport report = new PolicyCheckReport(new CheckPoliciesResult("Report test org"));
         report.generate(new File("/non/existing/dir"), false);
     }
 
     @Test
     public void testEmptyResult() throws IOException {
-        CheckPoliciesResult result = new CheckPoliciesResult();
+        CheckPoliciesResult result = new CheckPoliciesResult("Report test org");
         PolicyCheckReport report = new PolicyCheckReport(result);
         report.generate(temporaryFolder.getRoot(), false);
         report.getBuildName(); // just for breakpoints
@@ -62,8 +62,7 @@ public class PolicyCheckReportTest {
     @Test
     public void testResultWEmptyProjects() throws IOException {
         PolicyCheckResourceNode root = new PolicyCheckResourceNode();
-        CheckPoliciesResult result = new CheckPoliciesResult();
-        result.setOrganization("Report test org");
+        CheckPoliciesResult result = new CheckPoliciesResult("Report test org");
         result.getExistingProjects().put("existing-project-1", root);
         result.getExistingProjects().put("existing-project-2", root);
         result.getNewProjects().put("new-project-1", root);
@@ -181,8 +180,7 @@ public class PolicyCheckReportTest {
         node.getChildren().add(new PolicyCheckResourceNode(resource, approvePolicy));
         root.getChildren().add(node);
 
-        CheckPoliciesResult result = new CheckPoliciesResult();
-        result.setOrganization("Report test org");
+        CheckPoliciesResult result = new CheckPoliciesResult("Report test org");
         result.getExistingProjects().put("existing-project-1", root);
         result.getExistingProjects().put("existing-project-2", root);
         result.getNewProjects().put("new-project-1", root);

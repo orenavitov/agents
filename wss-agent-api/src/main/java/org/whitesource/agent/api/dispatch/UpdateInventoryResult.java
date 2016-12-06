@@ -15,17 +15,15 @@
  */
 package org.whitesource.agent.api.dispatch;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-
 
 /**
  * Result of the update inventory operation. 
  * 
  * @author Edo.Shor
  */
-public class UpdateInventoryResult implements Serializable {
+public class UpdateInventoryResult extends BaseResult {
 
     /* --- Static members --- */
 
@@ -33,22 +31,11 @@ public class UpdateInventoryResult implements Serializable {
 
     /* --- Members --- */
 	
-	private String organization;
-	
 	private Collection<String> updatedProjects;
-	
+
 	private Collection<String> createdProjects;
-	
+
 	/* --- Constructors --- */
-	
-	/**
-	 * Default constructor (for JSON parsing)
-	 * 
-	 */
-	public UpdateInventoryResult() {
-		updatedProjects = new ArrayList<String>();
-		createdProjects = new ArrayList<String>();
-	}
 	
 	/**
 	 * Constructor
@@ -56,20 +43,13 @@ public class UpdateInventoryResult implements Serializable {
 	 * @param organization Name of the domain.
 	 */
 	public UpdateInventoryResult(String organization) {
-		this();
-		this.organization = organization;
+		super(organization);
+		updatedProjects = new ArrayList<String>();
+		createdProjects = new ArrayList<String>();
 	}
 
 	/* --- Getters / Setters --- */ 
 
-	public String getOrganization() {
-		return organization;
-	}
-
-	public void setOrganization(String organization) {
-		this.organization = organization;
-	}
-	
 	public Collection<String> getUpdatedProjects() {
 		return updatedProjects;
 	}

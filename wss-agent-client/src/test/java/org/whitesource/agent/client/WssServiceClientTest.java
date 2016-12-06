@@ -300,7 +300,7 @@ public class WssServiceClientTest {
         thrown.expect(WssServiceException.class);
         thrown.expectMessage(ResultEnvelope.MESSAGE_ILLEGAL_ARGUMENTS);
 
-         CheckPoliciesResult response = new CheckPoliciesResult();
+         CheckPoliciesResult response = new CheckPoliciesResult("organization");
         server.register("/agent", createHandler(response, ResultEnvelope.STATUS_BAD_REQUEST, ResultEnvelope.MESSAGE_ILLEGAL_ARGUMENTS));
         client.checkPolicies(requestFactory.newCheckPoliciesRequest("orgToken", null));
     }

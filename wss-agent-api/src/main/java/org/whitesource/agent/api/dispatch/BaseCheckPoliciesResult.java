@@ -21,24 +21,18 @@ import org.whitesource.agent.api.model.ResourceInfo;
 import java.io.Serializable;
 import java.util.*;
 
-
 /**
  * Base, abstract Result of check policy requests.
  * 
  * @author anna.rozin
  */
-public abstract class BaseCheckPoliciesResult implements Serializable {
+public abstract class BaseCheckPoliciesResult extends BaseResult {
 
     /* --- Static members --- */
 
 	private static final long serialVersionUID = -4268012175086999291L;
 
 	/* --- Members --- */
-
-	/**
-	 * Name of organization in.
-	 */
-	private String organization;
 
 	/**
 	 * Map of project name to the root of its dependency graph with policies application result.
@@ -58,22 +52,15 @@ public abstract class BaseCheckPoliciesResult implements Serializable {
 	/* --- Constructors --- */
 
 	/**
-	 * Default constructor
-	 */
-	public BaseCheckPoliciesResult() {
-		existingProjects = new HashMap<String, PolicyCheckResourceNode>();
-		newProjects = new HashMap<String, PolicyCheckResourceNode>();
-		projectNewResources = new HashMap<String, Collection<ResourceInfo>>();
-	}
-
-	/**
 	 * Constructor
 	 *
 	 * @param organization Name of the domain.
 	 */
 	public BaseCheckPoliciesResult(String organization) {
-		this();
-		this.organization = organization;
+		super(organization);
+		existingProjects = new HashMap<String, PolicyCheckResourceNode>();
+		newProjects = new HashMap<String, PolicyCheckResourceNode>();
+		projectNewResources = new HashMap<String, Collection<ResourceInfo>>();
 	}
 
     /* --- Public methods --- */
@@ -97,14 +84,6 @@ public abstract class BaseCheckPoliciesResult implements Serializable {
 	}
 
 	/* --- Getters / Setters --- */
-
-	public String getOrganization() {
-		return organization;
-	}
-
-	public void setOrganization(String organization) {
-		this.organization = organization;
-	}
 
 	public Map<String, PolicyCheckResourceNode> getNewProjects() {
 		return newProjects;

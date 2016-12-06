@@ -33,13 +33,6 @@ public class CheckPoliciesResult extends BaseCheckPoliciesResult {
 	/* --- Constructors --- */
 
     /**
-     * Default constructor
-     */
-    public CheckPoliciesResult() {
-        super();
-    }
-
-    /**
      * Constructor
      *
      * @param organization Name of the domain.

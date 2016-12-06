@@ -31,13 +31,6 @@ public class CheckPolicyComplianceResult extends BaseCheckPoliciesResult {
 	/* --- Constructors --- */
 
 	/**
-	 * Default constructor
-	 */
-	public CheckPolicyComplianceResult() {
-		super();
-	}
-
-	/**
 	 * Constructor
 	 *
 	 * @param organization Name of the domain.
